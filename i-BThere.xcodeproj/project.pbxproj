@@ -13,7 +13,6 @@
 		A6CF1EDB1A629D51009790B7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6CF1ED91A629D51009790B7 /* InfoPlist.strings */; };
 		A6CF1EDD1A629D51009790B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CF1EDC1A629D51009790B7 /* main.m */; };
 		A6CF1EE11A629D51009790B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CF1EE01A629D51009790B7 /* AppDelegate.m */; };
-		A6CF1EE41A629D51009790B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CF1EE21A629D51009790B7 /* Main.storyboard */; };
 		A6CF1EE71A629D51009790B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CF1EE61A629D51009790B7 /* ViewController.m */; };
 		A6CF1EE91A629D51009790B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6CF1EE81A629D51009790B7 /* Images.xcassets */; };
 		A6CF1EF01A629D51009790B7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CF1EEF1A629D51009790B7 /* XCTest.framework */; };
@@ -21,6 +20,10 @@
 		A6CF1EF21A629D51009790B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CF1ED41A629D51009790B7 /* UIKit.framework */; };
 		A6CF1EFA1A629D51009790B7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6CF1EF81A629D51009790B7 /* InfoPlist.strings */; };
 		A6CF1EFC1A629D51009790B7 /* i_BThereTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CF1EFB1A629D51009790B7 /* i_BThereTests.m */; };
+		A6CF1F061A629DED009790B7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CF1F051A629DED009790B7 /* FacebookSDK.framework */; };
+		A6CF1F071A629DED009790B7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CF1F051A629DED009790B7 /* FacebookSDK.framework */; };
+		A6CF1F091A62A004009790B7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CF1F081A62A004009790B7 /* Storyboard.storyboard */; };
+		A6CF1F0A1A62A004009790B7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CF1F081A62A004009790B7 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +47,6 @@
 		A6CF1EDE1A629D51009790B7 /* i-BThere-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "i-BThere-Prefix.pch"; sourceTree = "<group>"; };
 		A6CF1EDF1A629D51009790B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A6CF1EE01A629D51009790B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A6CF1EE31A629D51009790B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A6CF1EE51A629D51009790B7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A6CF1EE61A629D51009790B7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A6CF1EE81A629D51009790B7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -53,6 +55,8 @@
 		A6CF1EF71A629D51009790B7 /* i-BThereTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "i-BThereTests-Info.plist"; sourceTree = "<group>"; };
 		A6CF1EF91A629D51009790B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A6CF1EFB1A629D51009790B7 /* i_BThereTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = i_BThereTests.m; sourceTree = "<group>"; };
+		A6CF1F051A629DED009790B7 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		A6CF1F081A62A004009790B7 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6CF1ED31A629D51009790B7 /* CoreGraphics.framework in Frameworks */,
+				A6CF1F061A629DED009790B7 /* FacebookSDK.framework in Frameworks */,
 				A6CF1ED51A629D51009790B7 /* UIKit.framework in Frameworks */,
 				A6CF1ED11A629D51009790B7 /* Foundation.framework in Frameworks */,
 			);
@@ -71,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6CF1EF01A629D51009790B7 /* XCTest.framework in Frameworks */,
+				A6CF1F071A629DED009790B7 /* FacebookSDK.framework in Frameworks */,
 				A6CF1EF21A629D51009790B7 /* UIKit.framework in Frameworks */,
 				A6CF1EF11A629D51009790B7 /* Foundation.framework in Frameworks */,
 			);
@@ -101,6 +107,7 @@
 		A6CF1ECF1A629D51009790B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6CF1F051A629DED009790B7 /* FacebookSDK.framework */,
 				A6CF1ED01A629D51009790B7 /* Foundation.framework */,
 				A6CF1ED21A629D51009790B7 /* CoreGraphics.framework */,
 				A6CF1ED41A629D51009790B7 /* UIKit.framework */,
@@ -114,11 +121,11 @@
 			children = (
 				A6CF1EDF1A629D51009790B7 /* AppDelegate.h */,
 				A6CF1EE01A629D51009790B7 /* AppDelegate.m */,
-				A6CF1EE21A629D51009790B7 /* Main.storyboard */,
 				A6CF1EE51A629D51009790B7 /* ViewController.h */,
 				A6CF1EE61A629D51009790B7 /* ViewController.m */,
 				A6CF1EE81A629D51009790B7 /* Images.xcassets */,
 				A6CF1ED71A629D51009790B7 /* Supporting Files */,
+				A6CF1F081A62A004009790B7 /* Storyboard.storyboard */,
 			);
 			path = "i-BThere";
 			sourceTree = "<group>";
@@ -229,8 +236,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6CF1EE91A629D51009790B7 /* Images.xcassets in Resources */,
+				A6CF1F091A62A004009790B7 /* Storyboard.storyboard in Resources */,
 				A6CF1EDB1A629D51009790B7 /* InfoPlist.strings in Resources */,
-				A6CF1EE41A629D51009790B7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6CF1EFA1A629D51009790B7 /* InfoPlist.strings in Resources */,
+				A6CF1F0A1A62A004009790B7 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,14 +288,6 @@
 				A6CF1EDA1A629D51009790B7 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		A6CF1EE21A629D51009790B7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A6CF1EE31A629D51009790B7 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		A6CF1EF81A629D51009790B7 /* InfoPlist.strings */ = {
@@ -376,6 +376,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/tudorsirbu/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "i-BThere/i-BThere-Prefix.pch";
 				INFOPLIST_FILE = "i-BThere/i-BThere-Info.plist";
@@ -389,6 +393,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/tudorsirbu/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "i-BThere/i-BThere-Prefix.pch";
 				INFOPLIST_FILE = "i-BThere/i-BThere-Info.plist";
@@ -405,6 +413,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/tudorsirbu/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "i-BThere/i-BThere-Prefix.pch";
@@ -427,6 +436,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/tudorsirbu/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "i-BThere/i-BThere-Prefix.pch";
