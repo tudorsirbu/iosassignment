@@ -37,6 +37,7 @@
     [self performSegueWithIdentifier:@"goToFriendsList" sender:self];
 }
 
+
 // Handle possible errors that can occur during login
 - (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
     NSString *alertMessage, *alertTitle;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A60E63591A667B3F002F9434 /* PersonAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A60E63581A667B3F002F9434 /* PersonAnnotation.m */; };
+		A60E635B1A667ECD002F9434 /* i-BThere.png in Resources */ = {isa = PBXBuildFile; fileRef = A60E635A1A667ECD002F9434 /* i-BThere.png */; };
 		A6BDB9031A65ACC5006E2776 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BDB9021A65ACC5006E2776 /* MapViewController.m */; };
 		A6BDB9041A65ACC5006E2776 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BDB9021A65ACC5006E2776 /* MapViewController.m */; };
 		A6BDB9061A65B1A6006E2776 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BDB9051A65B1A6006E2776 /* MapKit.framework */; };
@@ -42,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A60E63571A667B3F002F9434 /* PersonAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonAnnotation.h; sourceTree = "<group>"; };
+		A60E63581A667B3F002F9434 /* PersonAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonAnnotation.m; sourceTree = "<group>"; };
+		A60E635A1A667ECD002F9434 /* i-BThere.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "i-BThere.png"; sourceTree = "<group>"; };
 		A6BDB9011A65ACC5006E2776 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		A6BDB9021A65ACC5006E2776 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		A6BDB9051A65B1A6006E2776 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -139,6 +144,8 @@
 				A6CF1F0C1A62AD61009790B7 /* FriendsListViewController.m */,
 				A6BDB9011A65ACC5006E2776 /* MapViewController.h */,
 				A6BDB9021A65ACC5006E2776 /* MapViewController.m */,
+				A60E63571A667B3F002F9434 /* PersonAnnotation.h */,
+				A60E63581A667B3F002F9434 /* PersonAnnotation.m */,
 				A6CF1EE81A629D51009790B7 /* Images.xcassets */,
 				A6CF1ED71A629D51009790B7 /* Supporting Files */,
 				A6CF1F081A62A004009790B7 /* Storyboard.storyboard */,
@@ -149,6 +156,7 @@
 		A6CF1ED71A629D51009790B7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A60E635A1A667ECD002F9434 /* i-BThere.png */,
 				A6CF1ED81A629D51009790B7 /* i-BThere-Info.plist */,
 				A6CF1ED91A629D51009790B7 /* InfoPlist.strings */,
 				A6CF1EDC1A629D51009790B7 /* main.m */,
@@ -254,6 +262,7 @@
 				A6CF1EE91A629D51009790B7 /* Images.xcassets in Resources */,
 				A6CF1F091A62A004009790B7 /* Storyboard.storyboard in Resources */,
 				A6CF1EDB1A629D51009790B7 /* InfoPlist.strings in Resources */,
+				A60E635B1A667ECD002F9434 /* i-BThere.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +285,7 @@
 				A6CF1F0D1A62AD61009790B7 /* FriendsListViewController.m in Sources */,
 				A6CF1EE71A629D51009790B7 /* ViewController.m in Sources */,
 				A6BDB9031A65ACC5006E2776 /* MapViewController.m in Sources */,
+				A60E63591A667B3F002F9434 /* PersonAnnotation.m in Sources */,
 				A6CF1EE11A629D51009790B7 /* AppDelegate.m in Sources */,
 				A6CF1EDD1A629D51009790B7 /* main.m in Sources */,
 			);
