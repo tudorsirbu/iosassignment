@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F66A41A7-9E22-4CF9-9473-60E133F44D66</string>
+	<key>IDESourceControlProjectName</key>
+	<string>i-BThere</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>611D54644388E0E1000475952DCB49371FFA5FE6</key>
+		<string>github.com:tudorsirbu/iosassignment.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>i-BThere.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>611D54644388E0E1000475952DCB49371FFA5FE6</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:tudorsirbu/iosassignment.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>611D54644388E0E1000475952DCB49371FFA5FE6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>611D54644388E0E1000475952DCB49371FFA5FE6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>i-BThere</string>
+		</dict>
+	</array>
+</dict>
+</plist>

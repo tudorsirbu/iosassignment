@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6BDB9031A65ACC5006E2776 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BDB9021A65ACC5006E2776 /* MapViewController.m */; };
+		A6BDB9041A65ACC5006E2776 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BDB9021A65ACC5006E2776 /* MapViewController.m */; };
+		A6BDB9061A65B1A6006E2776 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BDB9051A65B1A6006E2776 /* MapKit.framework */; };
 		A6CF1ED11A629D51009790B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CF1ED01A629D51009790B7 /* Foundation.framework */; };
 		A6CF1ED31A629D51009790B7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CF1ED21A629D51009790B7 /* CoreGraphics.framework */; };
 		A6CF1ED51A629D51009790B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CF1ED41A629D51009790B7 /* UIKit.framework */; };
@@ -24,6 +27,8 @@
 		A6CF1F071A629DED009790B7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6CF1F051A629DED009790B7 /* FacebookSDK.framework */; };
 		A6CF1F091A62A004009790B7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CF1F081A62A004009790B7 /* Storyboard.storyboard */; };
 		A6CF1F0A1A62A004009790B7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CF1F081A62A004009790B7 /* Storyboard.storyboard */; };
+		A6CF1F0D1A62AD61009790B7 /* FriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CF1F0C1A62AD61009790B7 /* FriendsListViewController.m */; };
+		A6CF1F0E1A62AD61009790B7 /* FriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CF1F0C1A62AD61009790B7 /* FriendsListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A6BDB9011A65ACC5006E2776 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		A6BDB9021A65ACC5006E2776 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A6BDB9051A65B1A6006E2776 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A6CF1ECD1A629D51009790B7 /* i-BThere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "i-BThere.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6CF1ED01A629D51009790B7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A6CF1ED21A629D51009790B7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -57,6 +65,8 @@
 		A6CF1EFB1A629D51009790B7 /* i_BThereTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = i_BThereTests.m; sourceTree = "<group>"; };
 		A6CF1F051A629DED009790B7 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		A6CF1F081A62A004009790B7 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		A6CF1F0B1A62AD61009790B7 /* FriendsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsListViewController.h; sourceTree = "<group>"; };
+		A6CF1F0C1A62AD61009790B7 /* FriendsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6BDB9061A65B1A6006E2776 /* MapKit.framework in Frameworks */,
 				A6CF1ED31A629D51009790B7 /* CoreGraphics.framework in Frameworks */,
 				A6CF1F061A629DED009790B7 /* FacebookSDK.framework in Frameworks */,
 				A6CF1ED51A629D51009790B7 /* UIKit.framework in Frameworks */,
@@ -107,6 +118,7 @@
 		A6CF1ECF1A629D51009790B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6BDB9051A65B1A6006E2776 /* MapKit.framework */,
 				A6CF1F051A629DED009790B7 /* FacebookSDK.framework */,
 				A6CF1ED01A629D51009790B7 /* Foundation.framework */,
 				A6CF1ED21A629D51009790B7 /* CoreGraphics.framework */,
@@ -123,6 +135,10 @@
 				A6CF1EE01A629D51009790B7 /* AppDelegate.m */,
 				A6CF1EE51A629D51009790B7 /* ViewController.h */,
 				A6CF1EE61A629D51009790B7 /* ViewController.m */,
+				A6CF1F0B1A62AD61009790B7 /* FriendsListViewController.h */,
+				A6CF1F0C1A62AD61009790B7 /* FriendsListViewController.m */,
+				A6BDB9011A65ACC5006E2776 /* MapViewController.h */,
+				A6BDB9021A65ACC5006E2776 /* MapViewController.m */,
 				A6CF1EE81A629D51009790B7 /* Images.xcassets */,
 				A6CF1ED71A629D51009790B7 /* Supporting Files */,
 				A6CF1F081A62A004009790B7 /* Storyboard.storyboard */,
@@ -257,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6CF1F0D1A62AD61009790B7 /* FriendsListViewController.m in Sources */,
 				A6CF1EE71A629D51009790B7 /* ViewController.m in Sources */,
+				A6BDB9031A65ACC5006E2776 /* MapViewController.m in Sources */,
 				A6CF1EE11A629D51009790B7 /* AppDelegate.m in Sources */,
 				A6CF1EDD1A629D51009790B7 /* main.m in Sources */,
 			);
@@ -267,6 +285,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6BDB9041A65ACC5006E2776 /* MapViewController.m in Sources */,
+				A6CF1F0E1A62AD61009790B7 /* FriendsListViewController.m in Sources */,
 				A6CF1EFC1A629D51009790B7 /* i_BThereTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +486,7 @@
 				A6CF1F011A629D51009790B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6CF1F021A629D51009790B7 /* Build configuration list for PBXNativeTarget "i-BThereTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +495,7 @@
 				A6CF1F041A629D51009790B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
