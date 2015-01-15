@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <GoogleMaps/GoogleMaps.h>
 #import <FacebookSDK/FacebookSDK.h>
 
 @implementation AppDelegate
@@ -15,6 +16,7 @@
 {
     // Override point for customization after application launch.
     [FBLoginView class];
+    [GMSServices provideAPIKey:@"AIzaSyBlNJ28KdpELu-IgPYAIkeFAsdnkWY1HOY"];
     return YES;
 }
 							
