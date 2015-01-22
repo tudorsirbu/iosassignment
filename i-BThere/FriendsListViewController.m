@@ -14,8 +14,7 @@
 
 @implementation FriendsListViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
 }
 

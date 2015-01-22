@@ -45,7 +45,10 @@
 		A6CF1F0A1A62A004009790B7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6CF1F081A62A004009790B7 /* Storyboard.storyboard */; };
 		A6CF1F0D1A62AD61009790B7 /* FriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CF1F0C1A62AD61009790B7 /* FriendsListViewController.m */; };
 		A6CF1F0E1A62AD61009790B7 /* FriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6CF1F0C1A62AD61009790B7 /* FriendsListViewController.m */; };
-		A6E57DB21A671E9E00F770DC /* marker_two.png in Resources */ = {isa = PBXBuildFile; fileRef = A6E57DB11A671E9E00F770DC /* marker_two.png */; };
+		A6FBB5B01A710C1C004A5218 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6FBB5AF1A710C1C004A5218 /* data.plist */; };
+		A6FBB5B11A710C1C004A5218 /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6FBB5AF1A710C1C004A5218 /* data.plist */; };
+		A6FBB5B41A71164E004A5218 /* AppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FBB5B31A71164E004A5218 /* AppUtil.m */; };
+		A6FBB5B51A71164E004A5218 /* AppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FBB5B31A71164E004A5218 /* AppUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +103,9 @@
 		A6CF1F081A62A004009790B7 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		A6CF1F0B1A62AD61009790B7 /* FriendsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsListViewController.h; sourceTree = "<group>"; };
 		A6CF1F0C1A62AD61009790B7 /* FriendsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsListViewController.m; sourceTree = "<group>"; };
-		A6E57DB11A671E9E00F770DC /* marker_two.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker_two.png; sourceTree = "<group>"; };
+		A6FBB5AF1A710C1C004A5218 /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
+		A6FBB5B31A71164E004A5218 /* AppUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtil.m; sourceTree = "<group>"; };
+		A6FBB5B61A711742004A5218 /* AppUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppUtil.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +151,7 @@
 		A6CF1EC41A629D51009790B7 = {
 			isa = PBXGroup;
 			children = (
+				A6FBB5AF1A710C1C004A5218 /* data.plist */,
 				A60E63601A6694A0002F9434 /* GoogleMaps.bundle */,
 				A6CF1ED61A629D51009790B7 /* i-BThere */,
 				A6CF1EF51A629D51009790B7 /* i-BThereTests */,
@@ -203,6 +209,8 @@
 				A6CF1EE81A629D51009790B7 /* Images.xcassets */,
 				A6CF1ED71A629D51009790B7 /* Supporting Files */,
 				A6CF1F081A62A004009790B7 /* Storyboard.storyboard */,
+				A6FBB5B31A71164E004A5218 /* AppUtil.m */,
+				A6FBB5B61A711742004A5218 /* AppUtil.h */,
 			);
 			path = "i-BThere";
 			sourceTree = "<group>";
@@ -210,7 +218,6 @@
 		A6CF1ED71A629D51009790B7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A6E57DB11A671E9E00F770DC /* marker_two.png */,
 				A63D9E6E1A669D5E00E07FC1 /* marker.png */,
 				A60E635A1A667ECD002F9434 /* i-BThere.png */,
 				A6CF1ED81A629D51009790B7 /* i-BThere-Info.plist */,
@@ -322,8 +329,8 @@
 				A6CF1F091A62A004009790B7 /* Storyboard.storyboard in Resources */,
 				A6CF1EDB1A629D51009790B7 /* InfoPlist.strings in Resources */,
 				A60E635B1A667ECD002F9434 /* i-BThere.png in Resources */,
-				A6E57DB21A671E9E00F770DC /* marker_two.png in Resources */,
 				A60E63611A6694A0002F9434 /* GoogleMaps.bundle in Resources */,
+				A6FBB5B01A710C1C004A5218 /* data.plist in Resources */,
 				A63D9E6F1A669D5E00E07FC1 /* marker.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6FBB5B11A710C1C004A5218 /* data.plist in Resources */,
 				A6CF1EFA1A629D51009790B7 /* InfoPlist.strings in Resources */,
 				A6CF1F0A1A62A004009790B7 /* Storyboard.storyboard in Resources */,
 			);
@@ -347,6 +355,7 @@
 				A6CF1F0D1A62AD61009790B7 /* FriendsListViewController.m in Sources */,
 				A6CF1EE71A629D51009790B7 /* ViewController.m in Sources */,
 				A6BDB9031A65ACC5006E2776 /* MapViewController.m in Sources */,
+				A6FBB5B41A71164E004A5218 /* AppUtil.m in Sources */,
 				A6CF1EE11A629D51009790B7 /* AppDelegate.m in Sources */,
 				A6CF1EDD1A629D51009790B7 /* main.m in Sources */,
 			);
@@ -359,6 +368,7 @@
 				A6BDB9041A65ACC5006E2776 /* MapViewController.m in Sources */,
 				A6CF1F0E1A62AD61009790B7 /* FriendsListViewController.m in Sources */,
 				A6CF1EFC1A629D51009790B7 /* i_BThereTests.m in Sources */,
+				A6FBB5B51A71164E004A5218 /* AppUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +418,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.sheffield.i-BThere";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: com.sheffield.i-BThere";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -427,6 +438,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PROVISIONING_PROFILE = "d8c8428d-5694-4f09-9975-5bb9dffba827";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -459,6 +471,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PROVISIONING_PROFILE = "d8c8428d-5694-4f09-9975-5bb9dffba827";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -469,8 +482,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: com.sheffield.i-BThere";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: com.sheffield.i-BThere";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/tudorsirbu/Documents/FacebookSDK,
@@ -481,7 +494,7 @@
 				INFOPLIST_FILE = "i-BThere/i-BThere-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d8c8428d-5694-4f09-9975-5bb9dffba827";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -504,7 +517,7 @@
 				INFOPLIST_FILE = "i-BThere/i-BThere-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "d8c8428d-5694-4f09-9975-5bb9dffba827";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
