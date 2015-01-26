@@ -2,7 +2,7 @@
 //  i_BThereTests.m
 //  i-BThereTests
 //
-//  Created by Tudor Sirbu on 11/01/2015.
+//  Created by Tudor Sirbu & Claudiu Tarta on 11/01/2015.
 //  Copyright (c) 2015 sheffield. All rights reserved.
 //
 

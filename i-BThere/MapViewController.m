@@ -2,7 +2,7 @@
 //  MapViewController.m
 //  i-BThere
 //
-//  Created by Tudor Sirbu on 13/01/2015.
+//  Created by Tudor Sirbu & Claudiu Tarta.
 //  Copyright (c) 2015 sheffield. All rights reserved.
 //
 
@@ -11,69 +11,75 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import <CoreLocation/CoreLocation.h>
 #import "AppUtil.h"
+#import "AppDelegate.h"
+#import "RequestMeetUp.h"
 
 
 @implementation MapViewController{
-    GMSMapView *mapView_;
+    GMSMapView *mapView;
     CLLocationManager *locationManager;
     GMSMarker *myLocation;
     NSData* receivedData;
-    NSString* currentUserId;
+    NSString* lastUserSelected;
     NSMutableDictionary* markerFriendsCorrelation;
 }
 
 -(void) viewDidLoad{
     [super viewDidLoad];
     
+    // create instance of the class that updates the current location on the server
+    self.updateCurrentLocationRequest = [[UpdateCurrentLocation alloc] init];
+    
+    // initialize the dictionary where the friends and their markers will be stored
     markerFriendsCorrelation = [[NSMutableDictionary alloc] init];
     
+    // initialize the location manager
     if (nil == locationManager)
         locationManager = [[CLLocationManager alloc] init];
-
-#ifdef __IPHONE_8_0
-    NSUInteger code = [CLLocationManager authorizationStatus];
-    if (code == kCLAuthorizationStatusNotDetermined && ([self->locationManager respondsToSelector:@selector(requestAlwaysAuthorization)] || [self->locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])) {
-        // choose one request according to your business.
-        if([[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationAlwaysUsageDescription"]){
-            [self->locationManager requestAlwaysAuthorization];
-        } else if([[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationWhenInUseUsageDescription"]) {
-            [self->locationManager  requestWhenInUseAuthorization];
-        } else {
-            NSLog(@"Info.plist does not contain NSLocationAlwaysUsageDescription or NSLocationWhenInUseUsageDescription");
-        }
-    }
-#endif
     
+    // request location permissions
+    [self requestLocationPermissions];
+    
+    // set this view controller as a delegate for the location manager
     locationManager.delegate = self;
-    
-    //Configure Accuracy depending on your needs, default is kCLLocationAccuracyBest
+
+    // configure accuracy
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    
-    // Set a movement threshold for new events.
+
+    // set a movement threshold for new events.
     locationManager.distanceFilter = 100; // meters
     
-    [locationManager startUpdatingLocation];
-    
-    mapView_.myLocationEnabled = YES;
+    // set where the camera will be positioned on the map
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude: locationManager.location.coordinate.latitude
                                                             longitude: locationManager.location.coordinate.longitude
                                                                  zoom:14];
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView_.delegate = self;
-    self.view = mapView_;
     
-    [self addMarker];
+    // create the map
+    mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    
+    // set the current view controller as the map's delegate
+    mapView.delegate = self;
+    
+    // display the map
+    self.view = mapView;
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    // add the marker representing the location of this user
+    [self addMyMarker];
+    
+    // start receiving location updates
+    [locationManager startUpdatingLocation];
+    
     [self getFriends];
-    [[FBRequest requestForMe] startWithCompletionHandler:^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *FBuser, NSError *error) {
-        currentUserId = [FBuser objectID];
-    }];
-    
     
     [NSTimer scheduledTimerWithTimeInterval:15.0
                                      target:self
                                    selector:@selector(getFriends)
                                    userInfo:nil
                                     repeats:YES];
+
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -83,112 +89,45 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    // get the last known location
     CLLocation* location = [locations lastObject];
+    
+    // update the location of the marker that represents the current user
     myLocation.position = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
-    [self updateMyCurrentLocation: location];
+    
+    // send the updated location to the server
+    [self.updateCurrentLocationRequest updateMyCurrentLocationTo:location withFbId: self.model.facebookId andName:self.model.name];
 }
 
--(void) updateMyCurrentLocation: (CLLocation*) currentLocation{
-    NSLog(@"Location updated!");
-    NSError *error;
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-    
-    NSURL *url = [NSURL URLWithString:@"http://ibthere.herokuapp.com/api/v1/fb_users"];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:60.0];
-    
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    [request setHTTPMethod:@"POST"];
-    
-    // create instance of the app util class
-    AppUtil* util = [[AppUtil alloc] init];
-    
-    NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys: currentUserId, @"fb_id",
-                          [[NSNumber alloc] initWithDouble: currentLocation.coordinate.latitude], @"latitude",
-                          [[NSNumber alloc] initWithDouble: currentLocation.coordinate.longitude], @"longitude",
-                          [util getAppId], @"device_id",nil];
-    NSData *postData = [NSJSONSerialization dataWithJSONObject:data options:0 error:&error];
-    [request setHTTPBody:postData];
-    
-    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-    }];
-    
-    [postDataTask resume];
-}
-
--(void) addMarker{
+-(void) addMyMarker{
     myLocation = [[GMSMarker alloc] init];
     myLocation.position = CLLocationCoordinate2DMake(41.887, -87.622);
     myLocation.appearAnimation = kGMSMarkerAnimationPop;
-    myLocation.map = mapView_;
+    myLocation.snippet = self.model.name;
     
-    [[FBRequest requestForMe] startWithCompletionHandler:^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *FBuser, NSError *error) {
-        if (error) {
-            NSLog(@"ERROR: %@", error);
-        }
-        
-        else {
-            NSString *userImageURL = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=normal", [FBuser objectID]];
-            
-            myLocation.snippet = [FBuser name];
-            
-            UIImage* pic = [UIImage imageWithData: [NSData dataWithContentsOfURL:[NSURL URLWithString: userImageURL]]];
-            
-            UIImage* markerImage = [UIImage imageNamed:@"marker.png"];
-            
-            // Begin a new image that will be the new image with the rounded corners
-            // (here with the size of an UIImageView)
-            CGSize size = CGSizeMake(60, 60);
-            UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-            
-            CGContextRef context = UIGraphicsGetCurrentContext();
-            UIGraphicsPushContext(context);
-            
-            [markerImage drawInRect: CGRectMake(0, 0, 62, 62)];
-            
-            CGRect rect = CGRectMake(9.7,4.5, 43, 43);
-            
-            // Add a clip before drawing anything, in the shape of an rounded rect
-            [[UIBezierPath bezierPathWithRoundedRect:rect
-                                        cornerRadius:30.0] addClip];
-            // Draw your image
-            [pic drawInRect:rect];
-            
-            UIGraphicsPopContext();
-            UIImage* output = UIGraphicsGetImageFromCurrentImageContext();
-        
-            
-            // Get the image, here setting the UIImageView image
-//            imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-            
-            // Lets forget about that we were drawing
-            UIGraphicsEndImageContext();
-            
-            myLocation.icon = output;
-        }
-    }];
+    myLocation.icon = [[[AppUtil alloc] init] generateUserMarkerForFacebookId: self.model.facebookId];
+    myLocation.map = mapView;
 }
 
 - (void) getFriends{
-    FBRequest* friendsRequest = [FBRequest requestForMyFriends];
-    [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection,
-                                                  NSDictionary* result,
-                                                  NSError *error) {
-        NSArray* friends = [result objectForKey:@"data"];
-        for (NSDictionary<FBGraphUser>* friend in friends) {
-//            NSLog(@"I have a friend named %@ with id %@", friend.name, friend.id);
-//            [self addMarkerByFacebookId:friend.id andName: friend.name];
-            [self getUserLocationByFacebookId: friend.id];
-        }
-    }];
+    dispatch_queue_t downloadQueue = dispatch_queue_create("GetFacebookFriends", NULL);
+    
+    dispatch_async(downloadQueue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            FBRequest* friendsRequest = [FBRequest requestForMyFriends];
+            [friendsRequest startWithCompletionHandler: ^(FBRequestConnection *connection,
+                                                          NSDictionary* result,
+                                                          NSError *error) {
+                NSArray* friends = [result objectForKey:@"data"];
+                for (NSDictionary<FBGraphUser>* friend in friends) {
+                    [self getUserLocationByFacebookId: [friend objectID]];
+                }
+            }];
+        });
+    });
 }
 
--(void) addMarkerByFacebookId: (NSString *) id WithLatitude: (double) latitude andLongitude: (double) longitude{
+-(void) addMarkerByFacebookId: (NSString *) id forUserWithName: (NSString*) name andWithLatitude: (double) latitude andLongitude: (double) longitude{
     GMSMarker *userLocation = [[GMSMarker alloc] init];
     if([markerFriendsCorrelation objectForKey: id] != nil){
         userLocation = [markerFriendsCorrelation objectForKey: id];
@@ -198,61 +137,12 @@
     
     userLocation.position = CLLocationCoordinate2DMake(latitude, longitude);
     userLocation.appearAnimation = kGMSMarkerAnimationPop;
-    userLocation.map = mapView_;
+    userLocation.title = name;
+    userLocation.snippet = @"Click to arrange a meet up";
+    userLocation.userData = id;
     
-    [[FBRequest requestForGraphPath: id] startWithCompletionHandler:^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *FBuser, NSError *error) {
-        if (error) {
-            NSLog(@"ERROR: %@", error);
-        }
-        
-        else {
-            NSString *userImageURL = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=normal", id];
-            
-//            [[FBRequest requestForMe] startWithCompletionHandler:^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *FBuser, NSError *error) {
-//                userLocation.snippet  = [FBuser name];
-//            }];
-//
-            userLocation.title = [FBuser name];
-            userLocation.snippet = @"Click to arrange a meet up";
-            userLocation.userData = id;
-            
-            UIImage* pic = [UIImage imageWithData: [NSData dataWithContentsOfURL:[NSURL URLWithString: userImageURL]]];
-            
-            UIImage* markerImage = [UIImage imageNamed:@"marker.png"];
-            
-            // Begin a new image that will be the new image with the rounded corners
-            // (here with the size of an UIImageView)
-            CGSize size = CGSizeMake(60, 60);
-            UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-            
-            CGContextRef context = UIGraphicsGetCurrentContext();
-            UIGraphicsPushContext(context);
-            
-            [markerImage drawInRect: CGRectMake(0, 0, 62, 62)];
-            
-            CGRect rect = CGRectMake(9.7,4.5, 43, 43);
-            
-            // Add a clip before drawing anything, in the shape of an rounded rect
-            [[UIBezierPath bezierPathWithRoundedRect:rect
-                                        cornerRadius:30.0] addClip];
-            // Draw your image
-            [pic drawInRect:rect];
-            
-            UIGraphicsPopContext();
-            UIImage* output = UIGraphicsGetImageFromCurrentImageContext();
-            
-            
-            // Get the image, here setting the UIImageView image
-            //            imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-            
-            // Lets forget about that we were drawing
-            UIGraphicsEndImageContext();
-            
-            userLocation.icon = output;
-        }
-    }];
-    
-    
+    userLocation.icon = [[[AppUtil alloc] init] generateUserMarkerForFacebookId: id];
+    userLocation.map = mapView;
 }
 
 - (void) getUserLocationByFacebookId: (NSString*) id{
@@ -274,30 +164,69 @@
     NSDictionary *results = [NSJSONSerialization
                              JSONObjectWithData:receivedData
                              options:kNilOptions error:&error];
-//    NSLog(@"dict: %@", results);
     
     if([results objectForKey: @"fb_id"] != nil){
-        // get the latitude & longitude from the dictionary as double
-        
+        // get the user's facebook id
         NSString* fb_id = [results objectForKey: @"fb_id"];
+        NSString* name = [results objectForKey: @"name"];
         
-        [self addMarkerByFacebookId:fb_id WithLatitude: [[results objectForKey: @"latitude"] doubleValue]
+        [self addMarkerByFacebookId: fb_id
+                    forUserWithName:name
+                    andWithLatitude:[[results objectForKey: @"latitude"] doubleValue]
                        andLongitude:[[results objectForKey: @"longitude"] doubleValue]];
     }
 }
 
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
+    // ignore taps on the current user's marker info window
+    if(!marker.userData){
+        // go to the next view
+        [self.delegate dismissMap];
+        return;
+    }
+    
+    // create and prepare an alert dialog that asks the user to confirm they want to send a request
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
                                                     message:@"They will receive a notification regarding your request."
-                                                   delegate:nil
+                                                   delegate:self
                                           cancelButtonTitle:@"No"
                                           otherButtonTitles:@"Yes", nil];
     
+    // set the last selected user to the one in the current marker
+    lastUserSelected = marker.userData;
+    
+    // query facebook to get the user's name and show the alert
     [[FBRequest requestForGraphPath: marker.userData] startWithCompletionHandler:^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *FBuser, NSError *error) {
         NSString* title = [NSString stringWithFormat: @"Would you like to meet with %@?", [FBuser name]];
         [alert setTitle: title];
         [alert show];
     }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    // check  if the yess button has been pressed
+    if(buttonIndex == 1){
+        // instantiate the meet up request class
+        RequestMeetUp* request = [[RequestMeetUp alloc] init];
+        // send a request to the selected user from the current user
+        [request requestMeetUpWithFbId: lastUserSelected fromUserWithFbId: self.model.facebookId];
+    }
+}
+
+-(void) requestLocationPermissions{
+#ifdef __IPHONE_8_0
+    NSUInteger code = [CLLocationManager authorizationStatus];
+    if (code == kCLAuthorizationStatusNotDetermined && ([self->locationManager respondsToSelector:@selector(requestAlwaysAuthorization)] || [self->locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])) {
+        // choose one request according to your business.
+        if([[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationAlwaysUsageDescription"]){
+            [self->locationManager requestAlwaysAuthorization];
+        } else if([[NSBundle mainBundle] objectForInfoDictionaryKey:@"NSLocationWhenInUseUsageDescription"]) {
+            [self->locationManager  requestWhenInUseAuthorization];
+        } else {
+            NSLog(@"Info.plist does not contain NSLocationAlwaysUsageDescription or NSLocationWhenInUseUsageDescription");
+        }
+    }
+#endif
 }
 
 @end

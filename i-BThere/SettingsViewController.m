@@ -2,35 +2,35 @@
 //  FriendsListViewController.m
 //  i-BThere
 //
-//  Created by Tudor Sirbu on 11/01/2015.
+//  Created by Tudor Sirbu & Claudiu Tarta.
 //  Copyright (c) 2015 sheffield. All rights reserved.
 //
 
-#import "FriendsListViewController.h"
+#import "SettingsViewController.h"
 #import "AppDelegate.h"
 
-@interface FriendsListViewController ()
+@interface SettingsViewController ()
 @end
 
-@implementation FriendsListViewController
+@implementation SettingsViewController
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    
+    // set the greeting to contain the user's name;
+    [self.greeting setText: [NSString stringWithFormat:@"Hello %@!", self.model.name]];
 }
-
-
 
 - (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)shareLinkWithShareDialog:(id)sender
-{
-    
+- (IBAction)shareLinkWithShareDialog:(id)sender{
     // Check if the Facebook app is installed and we can present the share dialog
     FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
-    params.link = [NSURL URLWithString:@"https://developers.facebook.com/docs/ios/share/"];
+    
+    params.link = [NSURL URLWithString:@"https://www.facebook.com/pages/I-BThere/1034334616582372"];
     // If the Facebook app is installed and we can present the share dialog
     if ([FBDialogs canPresentShareDialogWithParams:params]) {
         
@@ -53,11 +53,8 @@
         
         // Put together the dialog parameters
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       @"Sharing Tutorial", @"name",
-                                       @"Build great social apps and get more installs.", @"caption",
-                                       @"Allow your users to share stories on Facebook from your app using the iOS SDK.", @"description",
-                                       @"https://developers.facebook.com/docs/ios/share/", @"link",
-                                       @"http://i.imgur.com/g3Qc1HN.png", @"picture",
+                                       @"i-BThere", @"name",
+                                       @"https://www.facebook.com/pages/I-BThere/1034334616582372", @"link",
                                        nil];
         
         // Show the feed dialog
@@ -106,7 +103,8 @@
 }
 
 -(IBAction)skipPressed:(id)sender{
-    [self performSegueWithIdentifier: @"goToMap" sender:self];
+    // dismiss the current modal and let the delegate handle the process
+    [self.delegate dismissSettings];
 }
 
 @end

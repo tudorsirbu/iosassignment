@@ -2,17 +2,20 @@
 //  ViewController.h
 //  i-BThere
 //
-//  Created by Tudor Sirbu on 11/01/2015.
+//  Created by Tudor Sirbu & Claudiu Tarta.
 //  Copyright (c) 2015 sheffield. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "ViewControllerDelegate.h"
+#import "User.h"
 
-@interface ViewController : UIViewController<FBLoginViewDelegate>
-@property (strong, nonatomic) IBOutlet FBProfilePictureView *profilePictureView;
-@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *statusLabel;
-
+@interface ViewController : UIViewController<FBLoginViewDelegate, ViewControllerDelegate>
+// the facebook login view
 @property (weak, nonatomic) IBOutlet FBLoginView *loginButton;
+
+// the user model which contains data about the currently logged in user
+@property (strong) User* model;
+
 @end
